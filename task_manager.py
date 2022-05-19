@@ -1,6 +1,8 @@
 import sys
 import csv
 
+from html_handler import *
+
 def get_pile_path():
     try:
         with open(sys.argv[1]) as csv_file:
@@ -24,6 +26,7 @@ def main():
         if len(sys.argv) == 3 and sys.argv[2] == "-s":
             print("List sorted")
         else:
+            generate_html_from_csv_list(csv_list)
             print("List no sorted")
 
 if __name__ == "__main__":
