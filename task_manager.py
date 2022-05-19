@@ -1,7 +1,9 @@
 import sys
 import csv
+from pprint import pprint
 
 from html_handler import *
+from csv_handler import sort_csv_by_priority
 
 def get_pile_path():
     try:
@@ -24,10 +26,10 @@ def main():
     csv_list = get_pile_path()
     if csv_list:
         if len(sys.argv) == 3 and sys.argv[2] == "-s":
-            print("List sorted")
-        else:
-            generate_html_from_csv_list(csv_list)
-            print("List no sorted")
+            csv_list = sort_csv_by_priority(csv_list)
+
+        pprint(csv_list)
+        generate_html_from_csv_list(csv_list)
 
 if __name__ == "__main__":
     main()
